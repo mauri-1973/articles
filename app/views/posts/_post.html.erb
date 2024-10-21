@@ -1,0 +1,68 @@
+<tr <%= dom_id post %>>
+  
+  <td>
+    <div class="card">
+      <div class="card-header">
+        <% if post.user_id != 0 %>
+          <p><strong>Autor: <%= post.user.name %></strong></p>
+        <% else %>
+          <p><strong>Autor: Anónimo</strong></p>
+        <% end %>
+        <strong>Fecha: <%= post.formatted_created_at %> - Hour: <%= post.formatted_created_at_hour %> </strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><strong><%= post.title %></strong></h5>
+        <% if @current_action == 'show' %>
+        <p class="card-text"><%= post.content %>.</p>
+        <% else %>
+        <p class="card-text"><%= post.content.truncate(100) %>.</p>
+        <% end %>
+        <%= link_to "Ver Post", post, class:"btn btn-primary btn-sm" %>
+      </div>
+      <div class="card-body">
+        <h3>Comentarios : <%= post.commentnews.count %></h3>
+      </div>
+      <% if @current_action == 'show' %>
+
+        <div class="card-body">
+        <% if post.commentnews.empty? %>
+          <p><strong>No hay comentarios aún.</strong></p>
+        <% else %>
+          <% post.commentnews.each do |comment| %>
+            <div>
+              <strong>
+                <% if comment.user.name? %>
+                  <%= comment.user.name %>:
+                <% else %>
+                  Anónimo:
+                <% end %>
+              </strong> <!-- Asumiendo que hay un user.name en comentario -->
+              <%= comment.body %>
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>
+
+      <% end %>
+      
+      
+      <div class="card-footer">
+        <div class="row">
+          <% Article::Kinds.each do |kind| %>
+            <div class="col-2 col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
+              <% if @current_action == 'show' %>
+              
+                <%= button_to"#{Post::KindsSpanish[kind]}", new_user_like_path(post_id: post.id, reaction_type:"likes", kind: kind), method: :post, class:"btn btn-success btn-sm btn-block", style:"width:100% !important" %>
+              
+              <% elsif @current_action == 'index' %>
+                  <button type="button" class="btn btn-success btn-sm btn-block" style="width:100%;" disbled><%= Post::KindsSpanish[kind] %> (<%= post.count_reactions_by_type(kind) %>)</button>
+                  
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>

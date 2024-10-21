@@ -1,0 +1,14 @@
+
+
+<div class="card">
+  <div class="card-header">
+    <%= variable_local.title %>. Date: <%= variable_local.formatted_when_went %>
+  </div>
+  <div class="card-body">
+    <%= variable_local.description %>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Edit this article", edit_article_path(variable_local), class:"btn btn-primary btn-sm" %>
+    <%= link_to "Back to articles", articles_path, class:"btn btn-primary btn-sm" %>
+  </div>
+</div>

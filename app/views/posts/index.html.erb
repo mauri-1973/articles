@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "POSTS" %>
+
+<h1>Posts</h1>
+
+
+
+<%= link_to "Nuevo Post", new_post_path, class:"btn btn-success btn-sm mt-5 mb-5" %>
+<div class="row" id="articles">
+  <div class="card">
+    <div class="card-body">
+      <table class="table datatable">
+        <thead>
+          <tr>
+            <th>Post:</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        <% @posts.each do |post| %>
+          <%= render post %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<script>
+     document.addEventListener("DOMContentLoaded", function(event) {
+       
+       var table = new DataTable('.datatable', {
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+            },
+        });
+     });
+</script>

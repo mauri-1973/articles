@@ -1,0 +1,22 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+
+<% if user_signed_in? %>
+  <% if @post.likes.find_by(user: current_user) %>
+    <%= button_to 'No me gusta', dislike_post_path(@post), method: :post %>
+  <% else %>
+    <%= button_to 'Me gusta', like_post_path(@post), method: :post %>
+  <% end %>
+<% end %>
+
+<p><strong>Comentarios:</strong></p>
+<% @post.comments.each do |comment| %>
+  <p><strong><%= comment.user&.name || "Anónimo" %>:</strong> <%= comment.body %></p>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= form_with model: [ @post, @post.comments.build ] do |form| %>
+    <%= form.text_area :body, placeholder: "Escribe tu comentario aquí..." %>
+    <%= form.submit "Añadir Comentario" %>
+  <% end %>
+<% end %>
