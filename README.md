@@ -15,10 +15,18 @@ Things you may want to cover:
 
 * Aplicamos estilos bootstrap a las vistas device
 
-* How to run the test suite
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/1.png" />
 
-* Services (job queues, cache servers, search engines, etc.)
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/2.png" />
 
-* Deployment instructions
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/3.png" />
 
-* ...
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/4.png" />
+
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/5.png" />
+
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/6.png" />
+
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/7.png" />
+
+* <img src="https://github.com/mauri-1973/articles/blob/main/imagenes/8.png" />
